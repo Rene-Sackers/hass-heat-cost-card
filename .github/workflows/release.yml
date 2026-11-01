@@ -1,8 +1,9 @@
 name: Release
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "v*"
 
 permissions:
   contents: write
@@ -18,7 +19,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - name: Attach built file to the release
+      - name: Create the release with the built file attached
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release upload "${{ github.event.release.tag_name }}" dist/heat-cost-card.js --clobber
+        run: gh release create "${{ github.ref_name }}" dist/heat-cost-card.js --title "${{ github.ref_name }}" --generate-notes

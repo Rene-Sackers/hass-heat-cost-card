@@ -12,14 +12,24 @@ A Home Assistant Lovelace card that shows the cost per kWh of heat from gas, res
 
 ## Install
 
-1. Build the minified file (or use `dist/heat-cost-card.min.js` directly):
+### HACS
+
+1. In HACS, open the three-dot menu and choose Custom repositories.
+2. Add this repository's URL with the type Dashboard.
+3. Install "Heat Cost Card" and hard-refresh the browser.
+
+HACS registers the resource for you.
+
+### Manual
+
+1. Download `heat-cost-card.js` from the latest release, or build it:
 
    ```bash
    npm install
    npm run build
    ```
 
-2. Copy `dist/heat-cost-card.min.js` to `/config/www/community/heat-cost-card/heat-cost-card.js`.
+2. Copy `dist/heat-cost-card.js` to `/config/www/community/heat-cost-card/heat-cost-card.js`.
 3. Add `/local/community/heat-cost-card/heat-cost-card.js` as a JavaScript module under Settings → Dashboards → Resources.
 4. Hard-refresh the browser and add a "Heat cost card".
 

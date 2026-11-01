@@ -8,15 +8,15 @@ A Home Assistant Lovelace card that shows the cost per kWh of heat from gas, res
 
 ## Install
 
-1. Build the minified file (or use `src/heat-cost-card.js` directly):
+1. Build the minified file (or use `dist/heat-cost-card.min.js` directly):
 
    ```bash
    npm install
    npm run build
    ```
 
-2. Copy `dist/heat-cost-card.min.js` to `/config/www/community/heat-cost-card.js`.
-3. Add `/local/community/heat-cost-card.js` as a JavaScript module under Settings → Dashboards → Resources.
+2. Copy `dist/heat-cost-card.min.js` to `/config/www/community/heat-cost-card/heat-cost-card.js`.
+3. Add `/local/community/heat-cost-card/heat-cost-card.js` as a JavaScript module under Settings → Dashboards → Resources.
 4. Hard-refresh the browser and add a "Heat cost card".
 
 ## Configuration
@@ -46,3 +46,7 @@ The COP model is a straight-line estimate. Set `cop_at_7c` and `cop_per_degree` 
 ```bash
 npm run watch   # rebuild dist/ on every change to src/
 ```
+
+## Use of AI
+
+This code was 100% AI generated. Take it or leave it.

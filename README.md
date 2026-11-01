@@ -1,0 +1,48 @@
+# Heat cost card
+
+A Home Assistant Lovelace card that shows the cost per kWh of heat from gas, resistive heaters and aircon, so you can see which is cheapest right now.
+
+- Gas: gas price ÷ gas energy content ÷ boiler efficiency
+- Resistive: electricity price
+- Aircon: electricity price ÷ COP, with COP estimated from the outside temperature
+
+## Install
+
+1. Build the minified file (or use `src/heat-cost-card.js` directly):
+
+   ```bash
+   npm install
+   npm run build
+   ```
+
+2. Copy `dist/heat-cost-card.min.js` to `/config/www/community/heat-cost-card.js`.
+3. Add `/local/community/heat-cost-card.js` as a JavaScript module under Settings → Dashboards → Resources.
+4. Hard-refresh the browser and add a "Heat cost card".
+
+## Configuration
+
+```yaml
+type: custom:heat-cost-card
+gas_price_entity: sensor.gas_price
+electricity_price_entity: sensor.electricity_price
+outside_temp_entity: sensor.outside_temperature
+# Optional, shown with defaults:
+title: Heating cost per kWh of heat
+currency: "€"
+boiler_efficiency: 90      # %
+gas_kwh_per_m3: 9.77
+cop_at_7c: 3.2             # aircon efficiency at 7°C
+cop_per_degree: 0.12       # COP change per °C
+cop_min: 1.5
+cop_max: 5
+```
+
+Electricity may be in €/kWh or ct/kWh. Gas may be in €/m³ or €/kWh. A °F temperature sensor is converted to °C. Costs show as "ct" when `currency` is `€`, otherwise as the plain value with the currency symbol.
+
+The COP model is a straight-line estimate. Set `cop_at_7c` and `cop_per_degree` from your unit's spec sheet.
+
+## Development
+
+```bash
+npm run watch   # rebuild dist/ on every change to src/
+```

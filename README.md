@@ -6,6 +6,10 @@ A Home Assistant Lovelace card that shows the cost per kWh of heat from gas, res
 - Resistive: electricity price
 - Aircon: electricity price ÷ COP, with COP estimated from the outside temperature
 
+## Example
+
+![Example image](readme/heat-cost-card-example.png)
+
 ## Install
 
 1. Build the minified file (or use `dist/heat-cost-card.min.js` directly):
